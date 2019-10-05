@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row mt-4 justify-content-center">
+    <h4>{{ client.nom + " " + client.prenom }}</h4>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="col col-md-4">
+      <div class="card bg-light">
+        <div class="card-header"><h5>Contact</h5></div>
+        <div class="card-body">
+          <p>
+            Téléphone : <strong>{{ client.tel }}</strong>
+          </p>
+          <p>
+            Email : <strong>{{ client.email }}</strong>
+          </p>
+          <p>
+            Adresse : <strong>{{ client.adresse }}</strong>
+          </p>
+          <p>
+            Ville : <strong>{{ client.ville }}</strong>
+          </p>
+          <p>
+            Code Postal : <strong>{{ client.codePostal }}</strong>
+          </p>
+          <hr />
+          <div class="text-center">
+            <a
+              href="#"
+              class="btn btn-warning  mr-4"
+              role="button"
+              aria-pressed="true"
+              >Modifier</a
+            ><button class="btn btn-danger">Suprimmer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col col-md-8">
+      <app-comptes [cc]="comptesCourant" [ce]="comptesEpargne"></app-comptes>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row mt-4">
+    <a
+      routerLink="/employes/new"
+      class="btn btn-success"
+      role="button"
+      aria-pressed="true"
+      >Nouveau client</a
+    >
+  </div>
+  <div class="row mt-4">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Prenom</th>
+          <th scope="col">Tél</th>
+          <th scope="col">Email</th>
+
+          <th scope="col">Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let client of clients">
+          <th scope="row">{{ client.id }}</th>
+          <td>{{ client.nom }}</td>
+          <td>{{ client.prenom }}</td>
+          <td>{{ client.tel }}</td>
+          <td>{{ client.email }}</td>
+
+          <td>
+            <a
+              routerLink="/clients/{{ client.id }}"
+              class="btn btn-primary mr-4"
+              >Details</a
+            >
+            <a
+              routerLink="/clients/{{ client.id }}/edit"
+              class="btn btn-warning  mr-4"
+              role="button"
+              aria-pressed="true"
+              >Modifier</a
+            >
+            <button
+              class="btn btn-danger  mr-4"
+              (click)="onDeleteClient(clients.id)"
+            >
+              Supprimer
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

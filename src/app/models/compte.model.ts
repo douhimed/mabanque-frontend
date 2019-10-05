@@ -1,0 +1,9 @@
+export class Compte {
+  constructor(
+    public id?: number,
+    public dateCreation?: Date,
+    public solde?: number,
+    public taux?: number,
+    public decouvert?: number
+  ) {}
+}

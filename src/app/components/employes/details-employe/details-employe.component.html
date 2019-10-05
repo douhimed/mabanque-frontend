@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row justify-content-center mt-4">
+    <h3 class="mt-4">{{ employe.nom + " " + employe.prenom }}</h3>
+  </div>
+  <hr />
+  <div class="row justify-content-center mt-4" *ngIf="message">
+    <div class="alert alert-warning" role="alert">
+      {{ message }}
+    </div>
+  </div>
+  <div class="row justify-content-center mt-4">
+    <div
+      class="card bg-ligh mb-4 ml-4 w-50"
+      style="max-width: 20rem;"
+      *ngFor="let client of clients"
+    >
+      <div class="card-header">
+        <h5>{{ client.nom + " " + client.prenom }}</h5>
+      </div>
+      <div class="card-body">
+        <p>
+          Téléphone : <strong>{{ client.tel }}</strong>
+        </p>
+        <p>
+          Email : <strong>{{ client.email }}</strong>
+        </p>
+        <p>
+          Adresse : <strong>{{ client.adresse }}</strong>
+        </p>
+        <p>
+          Ville : <strong>{{ client.ville }}</strong>
+        </p>
+        <p>
+          Code Postal : <strong>{{ client.codePostal }}</strong>
+        </p>
+        <hr />
+        <div class="text-center">
+          <a routerLink="/clients/{{ client.id }}" class="btn btn-primary"
+            >Details</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
