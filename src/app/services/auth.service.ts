@@ -4,8 +4,8 @@ import { Injectable } from "@angular/core";
   providedIn: "root"
 })
 export class AuthService {
-  idUser: number = 8;
-  gerant: boolean = true;
+  idUser: number = 3;
+  gerant: boolean = false;
 
   constructor() {}
 

@@ -4,6 +4,8 @@ export class Compte {
     public dateCreation?: Date,
     public solde?: number,
     public taux?: number,
-    public decouvert?: number
+    public decouvert?: number,
+    public clientId?: number,
+    public type?: string
   ) {}
 }

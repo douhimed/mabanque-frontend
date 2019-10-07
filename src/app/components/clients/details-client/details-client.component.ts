@@ -13,6 +13,7 @@ export class DetailsClientComponent implements OnInit {
   client: Client = new Client();
   comptesCourant: Compte[] = [];
   comptesEpargne: Compte[] = [];
+  status: string = "comptes";
 
   comptes: any[];
 
@@ -35,6 +36,14 @@ export class DetailsClientComponent implements OnInit {
       });
   }
 
+  onChangeStatus(status) {
+    this.status = status;
+    console.log(this.status);
+  }
+
+  getStatus() {
+    return this.status;
+  }
   rangeCompte(comptes) {
     this.comptesCourant = [];
     this.comptesEpargne = [];

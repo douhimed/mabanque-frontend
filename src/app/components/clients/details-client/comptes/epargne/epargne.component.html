@@ -1,0 +1,34 @@
+<div class="col-12">
+  <div class="card border-secondary mb-3">
+    <div class="card-header">Comptes Epargnes</div>
+
+    <div class="card-body">
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Date creation</th>
+            <th scope="col">Solde</th>
+            <th scope="col">Taux</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let compte of comptes">
+            <th scope="row">{{ compte.id }}</th>
+            <td>{{ compte.creationDate | date: "d/M/yy, h:mm" }}</td>
+            <td>{{ compte.solde }}</td>
+            <td>{{ compte.taux }}</td>
+            <td>
+              <a
+                routerLink="/comptes/{{ compte.id }}"
+                class="btn btn-primary mr-4"
+                >Details</a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

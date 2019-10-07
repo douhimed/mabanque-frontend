@@ -41,7 +41,7 @@
       <div class="card">
         <div class="card-header"><h5>Opérations</h5></div>
         <div class="card-body">
-          <table class="table">
+          <table class="table table-stripped">
             <thead class="thead-light">
               <tr>
                 <th scope="col">#</th>
@@ -55,7 +55,15 @@
                 <th scope="row">{{ operation.id }}</th>
                 <td>{{ operation.dateOperation | date: "d/M/yy, h:mm:ss" }}</td>
                 <td>{{ operation.montant }}</td>
-                <td>{{ operation.type }}</td>
+                <td>
+                  <span
+                    class="badge badge-info p-2"
+                    [ngClass]="{
+                      'badge-dark': operation.type === 'Verment'
+                    }"
+                    >{{ operation.type }}</span
+                  >
+                </td>
               </tr>
             </tbody>
           </table>

@@ -7,12 +7,14 @@ import { DetailsEmployeComponent } from "./components/employes/details-employe/d
 import { DetailsClientComponent } from "./components/clients/details-client/details-client.component";
 import { ClientsComponent } from "./components/clients/clients.component";
 import { OperationsComponent } from "./components/clients/details-client/comptes/operations/operations.component";
+import { AddClientComponent } from './components/clients/add-client/add-client.component';
 
 const routes: Routes = [
   { path: "", component: EmployesComponent },
   { path: "employes/new", component: AddEmployeComponent },
   { path: "employes/:id/edit", component: EditEmployeComponent },
   { path: "employes/:id", component: DetailsEmployeComponent },
+  { path: "clients/new", component: AddClientComponent },
   { path: "clients/:id", component: DetailsClientComponent },
   { path: "clients", component: ClientsComponent },
   { path: "comptes/:id", component: OperationsComponent }

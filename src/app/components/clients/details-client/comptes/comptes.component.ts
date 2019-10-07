@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { Compte } from "./../../../../models/compte.model";
 
 @Component({
@@ -6,14 +6,14 @@ import { Compte } from "./../../../../models/compte.model";
   templateUrl: "./comptes.component.html",
   styleUrls: ["./comptes.component.css"]
 })
-export class ComptesComponent implements OnInit, OnChanges {
+export class ComptesComponent implements OnInit {
   @Input() comptes: Compte[];
   @Input("cc") comptesCourant: Compte[];
   @Input("ce") comptesEpargne: Compte[];
+  @Input() status: string = "comptes";
+  @Input() clientID: number = 0;
 
   constructor() {}
 
   ngOnInit() {}
-
-  ngOnChanges(changes: import("@angular/core").SimpleChanges): void {}
 }

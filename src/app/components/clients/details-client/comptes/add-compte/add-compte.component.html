@@ -1,1 +1,46 @@
-<p>add-compte works!</p>
+<div class="col-12">
+  <div class="card border-secondary mb-3">
+    <div class="card-header">
+      Nouveau Compte {{ status === "cc" ? "Courant" : "Epargne" }}
+    </div>
+    <div class="card-body">
+      <div class="alert alert-success" role="alert" *ngIf="message">
+        {{ message }}
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Solde</label>
+        <input
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          placeholder="Saisir le solde"
+          [(ngModel)]="compte.solde"
+        />
+      </div>
+      <div class="form-group" *ngIf="status === 'ce'">
+        <label for="exampleInputEmail1">Taux</label>
+        <input
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          placeholder="Saisir le taux"
+          [(ngModel)]="compte.taux"
+        />
+      </div>
+      <div class="form-group" *ngIf="status === 'cc'">
+        <label for="exampleInputEmail1">Decouvert</label>
+        <input
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          placeholder="Saisir le decouvert"
+          [(ngModel)]="compte.decouvert"
+        />
+      </div>
+      <button class="btn btn-success" (click)="onAddCompte()">Submit</button>
+    </div>
+  </div>
+</div>

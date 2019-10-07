@@ -15,9 +15,12 @@ import { ClientsComponent } from './components/clients/clients.component';
 import { ComptesComponent } from './components/clients/details-client/comptes/comptes.component';
 import { AddCompteComponent } from './components/clients/details-client/comptes/add-compte/add-compte.component';
 import { OperationsComponent } from './components/clients/details-client/comptes/operations/operations.component';
+import { AddClientComponent } from './components/clients/add-client/add-client.component';
+import { CourantComponent } from './components/clients/details-client/comptes/courant/courant.component';
+import { EpargneComponent } from './components/clients/details-client/comptes/epargne/epargne.component';
 
 @NgModule({
-  declarations: [AppComponent, EmployesComponent, HeaderComponent, AddEmployeComponent, EditEmployeComponent, DetailsEmployeComponent, DetailsClientComponent, ClientsComponent, ComptesComponent, AddCompteComponent, OperationsComponent],
+  declarations: [AppComponent, EmployesComponent, HeaderComponent, AddEmployeComponent, EditEmployeComponent, DetailsEmployeComponent, DetailsClientComponent, ClientsComponent, ComptesComponent, AddCompteComponent, OperationsComponent, AddClientComponent, CourantComponent, EpargneComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [,],
   bootstrap: [AppComponent]

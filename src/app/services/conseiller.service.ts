@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from "./../../environments/environment.prod";
 import { Employe } from "../models/employe.model";
 import { AuthService } from "./auth.service";
+import { Client } from "../models/client.model";
+import { Compte } from "src/app/models/compte.model";
 
 @Injectable({
   providedIn: "root"
@@ -33,7 +35,15 @@ export class ConseillerService {
     return this.http.get(environment.url + "/clients/" + id);
   }
 
+  addClient(client: Client) {
+    return this.http.post(environment.url + "/clients", client);
+  }
+
   getCompte(id: number) {
     return this.http.get(environment.url + "/comptes/" + id);
+  }
+
+  addCompte(compte: Compte) {
+    return this.http.post(environment.url + "/comptes", compte);
   }
 }

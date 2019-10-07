@@ -37,7 +37,41 @@
       </div>
     </div>
     <div class="col col-md-8">
-      <app-comptes [cc]="comptesCourant" [ce]="comptesEpargne"></app-comptes>
+      <div class="row mb-3">
+        <div class="col-12">
+          <button
+            class="btn btn-primary  mr-4"
+            aria-pressed="true"
+            (click)="onChangeStatus('comptes')"
+          >
+            Informations
+          </button>
+          <button
+            class="btn btn-secondary  mr-4"
+            aria-pressed="true"
+            (click)="onChangeStatus('cc')"
+          >
+            Nouveau Compte Courant
+          </button>
+          <button
+            class="btn btn-secondary "
+            aria-pressed="true"
+            (click)="onChangeStatus('ce')"
+          >
+            Nouveau Compte Epargne
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <app-comptes
+            [clientID]="client.id"
+            [cc]="comptesCourant"
+            [ce]="comptesEpargne"
+            [status]="status"
+          ></app-comptes>
+        </div>
+      </div>
     </div>
   </div>
 </div>
