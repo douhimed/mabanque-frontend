@@ -22,10 +22,11 @@ export class ClientsComponent implements OnInit {
     this.fetchClients();
   }
 
-  onDeleteEmploye(id) {
-    this.conseillerService
-      .deleteClient(id)
-      .subscribe(() => this.fetchClients());
+  onDeleteClient(id) {
+    this.conseillerService.deleteClient(id).subscribe(() => {
+      this.clients = [];
+      this.fetchClients();
+    });
   }
 
   fetchClients() {
@@ -40,11 +41,13 @@ export class ClientsComponent implements OnInit {
   }
 
   fetchAllClients() {
-    this.gerantService.getAgentByGerant().subscribe(resp => {
-      resp["employes"].forEach(employe => {
-        if (employe["id"] !== this.authService.getUserId())
-          this.clients = this.clients.concat(employe["clients"]);
+    this.gerantService
+      .getAgentByGerant(this.authService.getUserId())
+      .subscribe(resp => {
+        resp["employes"].forEach(employe => {
+          if (employe["id"] !== this.authService.getUserId())
+            this.clients = this.clients.concat(employe["clients"]);
+        });
       });
-    });
   }
 }

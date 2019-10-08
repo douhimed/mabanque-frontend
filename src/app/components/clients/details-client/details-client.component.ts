@@ -1,6 +1,6 @@
-import { Component, OnInit, SimpleChanges } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { ConseillerService } from "./../../../services/conseiller.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Client } from "src/app/models/client.model";
 import { Compte } from "src/app/models/compte.model";
 
@@ -19,7 +19,8 @@ export class DetailsClientComponent implements OnInit {
 
   constructor(
     private conseillerService: ConseillerService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -42,6 +43,12 @@ export class DetailsClientComponent implements OnInit {
 
   onChangeStatus(status) {
     this.status = status;
+  }
+
+  onDeleteClient() {
+    this.conseillerService
+      .deleteClient(this.client.id)
+      .subscribe(() => this.router.navigate(["/clients"]));
   }
 
   getStatus() {

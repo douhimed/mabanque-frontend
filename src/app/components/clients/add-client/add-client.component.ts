@@ -24,7 +24,7 @@ export class AddClientComponent implements OnInit {
 
   ngOnInit() {
     this.gerantService
-      .getAgentByGerant()
+      .getAgentByGerant(this.authSrevice.getUserId())
       .subscribe(
         resp =>
           (this.conseillers = resp["employes"].filter(
@@ -36,8 +36,6 @@ export class AddClientComponent implements OnInit {
   onAddClient() {
     if (!this.authSrevice.isGerant())
       this.client.conseillerID = this.authSrevice.getUserId();
-    console.log(this.client);
-
     this.conseillerService
       .addClient(this.client)
       .subscribe(resp => this.router.navigate(["/clients/" + resp["id"]]));

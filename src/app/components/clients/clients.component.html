@@ -9,6 +9,9 @@
     >
   </div>
   <div class="row mt-4">
+    <div class="alert alert-success" role="alert" *ngIf="message">
+      {{ message }}
+    </div>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -44,7 +47,7 @@
             >
             <button
               class="btn btn-danger  mr-4"
-              (click)="onDeleteClient(clients.id)"
+              (click)="onDeleteClient(client.id)"
             >
               Supprimer
             </button>

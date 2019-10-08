@@ -9,6 +9,7 @@ import { AuthService } from "./../../services/auth.service";
 })
 export class EmployesComponent implements OnInit {
   employes: any[] = [];
+  message: string = null;
 
   constructor(
     private gerantService: GerantService,
@@ -25,7 +26,15 @@ export class EmployesComponent implements OnInit {
 
   fetchEmployes() {
     this.gerantService
-      .getAgentByGerant()
-      .subscribe(resp => (this.employes = resp["employes"]));
+      .getAgentByGerant(this.authService.getUserId())
+      .subscribe(resp => {
+        if (resp["employes"].length <= 0) {
+          this.message = "Cette agence est en cours de création";
+        } else {
+          this.employes = resp["employes"].filter(
+            emp => emp["id"] !== this.authService.getUserId()
+          );
+        }
+      });
   }
 }

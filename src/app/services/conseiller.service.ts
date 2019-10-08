@@ -13,7 +13,10 @@ export class ConseillerService {
   constructor(private http: HttpClient, private auth: AuthService) {}
 
   deleteClient(id: number) {
-    return this.http.delete(environment.url + "/clients/" + id);
+    const headers = new HttpHeaders({
+      "id-client": id.toString()
+    });
+    return this.http.delete(environment.url + "/clients", { headers: headers });
   }
 
   getEmploye(id: number) {
