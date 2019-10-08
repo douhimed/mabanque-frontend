@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, SimpleChanges } from "@angular/core";
 import { ConseillerService } from "./../../../services/conseiller.service";
 import { ActivatedRoute } from "@angular/router";
 import { Client } from "src/app/models/client.model";
@@ -36,9 +36,12 @@ export class DetailsClientComponent implements OnInit {
       });
   }
 
+  onSavingCompte(status: boolean) {
+    if (status) this.fetchClient();
+  }
+
   onChangeStatus(status) {
     this.status = status;
-    console.log(this.status);
   }
 
   getStatus() {

@@ -65,6 +65,7 @@
       <div class="row">
         <div class="col-12">
           <app-comptes
+            (onSaveCompte)="onSavingCompte($event)"
             [clientID]="client.id"
             [cc]="comptesCourant"
             [ce]="comptesEpargne"

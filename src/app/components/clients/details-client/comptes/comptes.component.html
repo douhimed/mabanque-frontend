@@ -11,6 +11,7 @@
   </div>
   <div>
     <app-add-compte
+      (onAddCompte)="onAddedCompte($event)"
       *ngIf="status !== 'comptes'"
       [status]="status"
       [clientID]="clientID"
