@@ -49,4 +49,8 @@ export class ConseillerService {
   addCompte(compte: Compte) {
     return this.http.post(environment.url + "/comptes", compte);
   }
+
+  updateClient(client: Client) {
+    return this.http.put(environment.url + "/clients", client);
+  }
 }

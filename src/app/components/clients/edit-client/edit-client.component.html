@@ -1,0 +1,109 @@
+<div class="container">
+  <div class="row justify-content-cente mt-4">
+    <div class="col-12">
+      <h3 class="mt-4">Nouveau CLient</h3>
+      <hr />
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputEmail4">Nom</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputEmail4"
+            placeholder="Nom"
+            [(ngModel)]="client.nom"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputPassword4">Prenom</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputPassword4"
+            placeholder="Prenom"
+            [(ngModel)]="client.prenom"
+          />
+        </div>
+      </div>
+      <h5 class="mt-4">Contact</h5>
+      <hr />
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputEmail41">Tél</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputEmail41"
+            placeholder="Nom"
+            [(ngModel)]="client.tel"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputPassword41">E-mail</label>
+          <input
+            type="email"
+            class="form-control"
+            id="inputPassword41"
+            placeholder="Prenom"
+            [(ngModel)]="client.email"
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputAddress">Adresse</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inputAddress"
+          placeholder="1234 Main St"
+          [(ngModel)]="client.adresse"
+        />
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputCity">Ville</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputCity"
+            [(ngModel)]="client.ville"
+          />
+        </div>
+        <div class="form-group col-md-2">
+          <label for="inputZip">Zip</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputZip"
+            [(ngModel)]="client.codePostal"
+          />
+        </div>
+      </div>
+      <div *ngIf="authSrevice.isGerant()">
+        <h5 class="mt-4">Conseiller</h5>
+        <hr />
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <select class="form-control" [(ngModel)]="client.conseillerID">
+              <option
+                *ngFor="let conseiller of conseillers"
+                value="{{ conseiller.id }}"
+                [ngClass]="{ selected: conseiller.id === client.conseillerID }"
+                >{{ conseiller.nom + " " + conseiller.prenom }}</option
+              >
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <br />
+      <button
+        type="button"
+        class="btn btn-secondary btn-lg btn-block"
+        (click)="onUpdateClient()"
+      >
+        Submit
+      </button>
+    </div>
+  </div>
+</div>

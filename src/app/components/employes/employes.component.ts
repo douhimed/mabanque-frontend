@@ -9,7 +9,7 @@ import { AuthService } from "./../../services/auth.service";
 })
 export class EmployesComponent implements OnInit {
   employes: any[] = [];
-  message: string = null;
+  message: string = "";
 
   constructor(
     private gerantService: GerantService,
