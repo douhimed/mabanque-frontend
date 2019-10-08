@@ -53,4 +53,8 @@ export class ConseillerService {
   updateClient(client: Client) {
     return this.http.put(environment.url + "/clients", client);
   }
+
+  deleteCompte(id: number) {
+    return this.http.delete(environment.url + "/comptes/" + id);
+  }
 }
