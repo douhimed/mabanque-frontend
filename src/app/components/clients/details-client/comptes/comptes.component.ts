@@ -1,5 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { Compte } from "./../../../../models/compte.model";
+import { ConseillerService } from "./../../../../services/conseiller.service";
+import { Operation } from "src/app/models/operation.model";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-comptes",
@@ -13,12 +16,29 @@ export class ComptesComponent implements OnInit {
   @Input() status: string = "comptes";
   @Input() clientID: number = 0;
   @Output() onSaveCompte = new EventEmitter<boolean>();
+  operation: Operation = new Operation();
+  operationInfos = { section: "" };
 
-  constructor() {}
+  constructor(
+    private conseillerService: ConseillerService,
+    private router: Router
+  ) {}
 
   ngOnInit() {}
 
   onAddedCompte(status: boolean) {
     this.onSaveCompte.emit(status);
+  }
+
+  onSavingOperation(operation: any) {
+    this.operationInfos = { ...operation };
+  }
+
+  afterSavingOperation() {
+    this.conseillerService.addOperation(this.operationInfos).subscribe(resp => {
+      this.status = "comptes";
+      this.operationInfos.section = "";
+      this.router.navigate(["/comptes/" + resp["id"]]);
+    });
   }
 }

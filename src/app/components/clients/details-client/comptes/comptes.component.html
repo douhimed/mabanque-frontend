@@ -1,13 +1,30 @@
 <div class="container">
   <div *ngIf="status === 'comptes'">
-    <app-courant
-      *ngIf="comptesCourant"
-      [comptes]="comptesCourant"
-    ></app-courant>
-    <app-epargne
-      *ngIf="comptesEpargne"
-      [comptes]="comptesEpargne"
-    ></app-epargne>
+    <div>
+      <app-new-operation
+        *ngIf="operationInfos.section === 'cc'"
+        [infos]="operationInfos"
+        (onAddedOperation)="afterSavingOperation($event)"
+      ></app-new-operation>
+      <app-courant
+        *ngIf="comptesCourant && operationInfos.section !== 'cc'"
+        (onAddOperation)="onSavingOperation($event)"
+        [comptes]="comptesCourant"
+      ></app-courant>
+    </div>
+
+    <div>
+      <app-new-operation
+        *ngIf="operationInfos.section === 'ce'"
+        [infos]="operationInfos"
+        (onAddedOperation)="afterSavingOperation($event)"
+      ></app-new-operation>
+      <app-epargne
+        *ngIf="comptesEpargne && operationInfos.section !== 'ce'"
+        (onAddOperation)="onSavingOperation($event)"
+        [comptes]="comptesEpargne"
+      ></app-epargne>
+    </div>
   </div>
   <div>
     <app-add-compte

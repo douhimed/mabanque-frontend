@@ -9,6 +9,7 @@ import { ClientsComponent } from "./components/clients/clients.component";
 import { OperationsComponent } from "./components/clients/details-client/comptes/operations/operations.component";
 import { AddClientComponent } from "./components/clients/add-client/add-client.component";
 import { EditClientComponent } from "./components/clients/edit-client/edit-client.component";
+import { AddOperationComponent } from "./components/add-operation/add-operation.component";
 
 const routes: Routes = [
   { path: "", component: EmployesComponent },
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: "clients/:id/edit", component: EditClientComponent },
   { path: "clients/:id", component: DetailsClientComponent },
   { path: "clients", component: ClientsComponent },
-  { path: "comptes/:id", component: OperationsComponent }
+  { path: "comptes/:id", component: OperationsComponent },
+  { path: "operations", component: AddOperationComponent }
 ];
 
 @NgModule({

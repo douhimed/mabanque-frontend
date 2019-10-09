@@ -7,21 +7,41 @@ import { FormsModule } from "@angular/forms";
 import { AppComponent } from "./app.component";
 import { EmployesComponent } from "./components/employes/employes.component";
 import { HeaderComponent } from "./components/header/header.component";
-import { AddEmployeComponent } from './components/employes/add-employe/add-employe.component';
-import { EditEmployeComponent } from './components/employes/edit-employe/edit-employe.component';
-import { DetailsEmployeComponent } from './components/employes/details-employe/details-employe.component';
-import { DetailsClientComponent } from './components/clients/details-client/details-client.component';
-import { ClientsComponent } from './components/clients/clients.component';
-import { ComptesComponent } from './components/clients/details-client/comptes/comptes.component';
-import { AddCompteComponent } from './components/clients/details-client/comptes/add-compte/add-compte.component';
-import { OperationsComponent } from './components/clients/details-client/comptes/operations/operations.component';
-import { AddClientComponent } from './components/clients/add-client/add-client.component';
-import { CourantComponent } from './components/clients/details-client/comptes/courant/courant.component';
-import { EpargneComponent } from './components/clients/details-client/comptes/epargne/epargne.component';
-import { EditClientComponent } from './components/clients/edit-client/edit-client.component';
+import { AddEmployeComponent } from "./components/employes/add-employe/add-employe.component";
+import { EditEmployeComponent } from "./components/employes/edit-employe/edit-employe.component";
+import { DetailsEmployeComponent } from "./components/employes/details-employe/details-employe.component";
+import { DetailsClientComponent } from "./components/clients/details-client/details-client.component";
+import { ClientsComponent } from "./components/clients/clients.component";
+import { ComptesComponent } from "./components/clients/details-client/comptes/comptes.component";
+import { AddCompteComponent } from "./components/clients/details-client/comptes/add-compte/add-compte.component";
+import { OperationsComponent } from "./components/clients/details-client/comptes/operations/operations.component";
+import { AddClientComponent } from "./components/clients/add-client/add-client.component";
+import { CourantComponent } from "./components/clients/details-client/comptes/courant/courant.component";
+import { EpargneComponent } from "./components/clients/details-client/comptes/epargne/epargne.component";
+import { EditClientComponent } from "./components/clients/edit-client/edit-client.component";
+import { AddOperationComponent } from "./components/add-operation/add-operation.component";
+import { NewOperationComponent } from './components/clients/details-client/comptes/new-operation/new-operation.component';
 
 @NgModule({
-  declarations: [AppComponent, EmployesComponent, HeaderComponent, AddEmployeComponent, EditEmployeComponent, DetailsEmployeComponent, DetailsClientComponent, ClientsComponent, ComptesComponent, AddCompteComponent, OperationsComponent, AddClientComponent, CourantComponent, EpargneComponent, EditClientComponent],
+  declarations: [
+    AppComponent,
+    EmployesComponent,
+    HeaderComponent,
+    AddEmployeComponent,
+    EditEmployeComponent,
+    DetailsEmployeComponent,
+    DetailsClientComponent,
+    ClientsComponent,
+    ComptesComponent,
+    AddCompteComponent,
+    OperationsComponent,
+    AddClientComponent,
+    CourantComponent,
+    EpargneComponent,
+    EditClientComponent,
+    AddOperationComponent,
+    NewOperationComponent
+  ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [,],
   bootstrap: [AppComponent]

@@ -21,9 +21,21 @@
             <td>
               <a
                 routerLink="/comptes/{{ compte.id }}"
-                class="btn btn-primary mr-4"
+                class="btn btn-primary mr-1"
                 >Details</a
               >
+              <button
+                class="btn btn-secondary mr-1"
+                (click)="onVerser(compte.id, 'cc')"
+              >
+                Verser
+              </button>
+              <button
+                class="btn btn-secondary"
+                (click)="onRetirer(compte.id, 'cc')"
+              >
+                Retirer
+              </button>
             </td>
           </tr>
         </tbody>

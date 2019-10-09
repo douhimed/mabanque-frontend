@@ -57,4 +57,8 @@ export class ConseillerService {
   deleteCompte(id: number) {
     return this.http.delete(environment.url + "/comptes/" + id);
   }
+
+  addOperation(operationInfos: { section: string }) {
+    return this.http.post(environment.url + "/operations", operationInfos);
+  }
 }
