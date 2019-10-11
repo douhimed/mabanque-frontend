@@ -10,7 +10,7 @@ import { AuthService } from "./../../../services/auth.service";
   styleUrls: ["./add-employe.component.css"]
 })
 export class AddEmployeComponent implements OnInit {
-  employe: Employe = new Employe("", "");
+  employe: Employe = new Employe();
 
   constructor(
     private gerantService: GerantService,

@@ -9,7 +9,6 @@ import { Router } from "@angular/router";
   providedIn: "root"
 })
 export class AuthService {
-  gerant: boolean;
   mainRouter = "/clients";
 
   constructor(private http: HttpClient, private router: Router) {}
@@ -19,7 +18,7 @@ export class AuthService {
   }
 
   isGerant() {
-    return this.gerant;
+    return sessionStorage.getItem("x-auth-isGerant") === "1";
   }
 
   authenticationHandler(user) {
@@ -27,8 +26,8 @@ export class AuthService {
       resp => {
         sessionStorage.setItem("x-auth-token", "Bearer " + resp["token"]);
         sessionStorage.setItem("x-auth-id", resp["idUser"]);
-        this.gerant = resp["gerant"];
-        if (this.gerant) this.mainRouter = "/employes";
+        sessionStorage.setItem("x-auth-isGerant", resp["gerant"] ? "1" : "0");
+        if (resp["gerant"]) this.mainRouter = "/employes";
         this.router.navigate([this.mainRouter]);
       },
       err => console.log(err.message)
@@ -48,6 +47,6 @@ export class AuthService {
   logout() {
     sessionStorage.removeItem("x-auth-token");
     sessionStorage.removeItem("x-auth-id");
-    this.gerant = null;
+    sessionStorage.removeItem("x-auth-isGerant");
   }
 }
