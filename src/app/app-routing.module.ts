@@ -12,14 +12,21 @@ import { EditClientComponent } from "./components/clients/edit-client/edit-clien
 import { AddOperationComponent } from "./components/add-operation/add-operation.component";
 import { LoginComponent } from "./components/login/login.component";
 import { LogoutComponent } from "./components/logout/logout.component";
-import { AuthGuard } from "./components/guards/auth.guard";
+import { AuthGuard } from "./guards/auth.guard";
+import { AnonymGuard } from "./guards/anonym.guard";
+import { isGerantGuard } from "./guards/is-gerant.guard";
+import { UnauthorizedComponent } from "./components/unauthorized/unauthorized.component";
 
 const routes: Routes = [
-  { path: "", component: EmployesComponent, canActivate: [AuthGuard] },
+  {
+    path: "",
+    component: ClientsComponent,
+    canActivate: [AuthGuard]
+  },
   {
     path: "employes/new",
     component: AddEmployeComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, isGerantGuard]
   },
   {
     path: "employes/:id/edit",
@@ -31,7 +38,11 @@ const routes: Routes = [
     component: DetailsEmployeComponent,
     canActivate: [AuthGuard]
   },
-  { path: "employes", component: EmployesComponent, canActivate: [AuthGuard] },
+  {
+    path: "employes",
+    component: EmployesComponent,
+    canActivate: [AuthGuard, isGerantGuard]
+  },
   {
     path: "clients/new",
     component: AddClientComponent,
@@ -58,8 +69,10 @@ const routes: Routes = [
     component: AddOperationComponent,
     canActivate: [AuthGuard]
   },
-  { path: "login", component: LoginComponent },
-  { path: "logout", component: LogoutComponent }
+  { path: "login", component: LoginComponent, canActivate: [AnonymGuard] },
+  { path: "logout", component: LogoutComponent },
+  { path: "401", component: UnauthorizedComponent },
+  { path: "**", redirectTo: "/401" }
 ];
 
 @NgModule({

@@ -23,9 +23,12 @@ import { AddOperationComponent } from "./components/add-operation/add-operation.
 import { NewOperationComponent } from "./components/clients/details-client/comptes/new-operation/new-operation.component";
 import { LoginComponent } from "./components/login/login.component";
 import { LogoutComponent } from "./components/logout/logout.component";
-import { AuthGuard } from "./components/guards/auth.guard";
+import { AuthGuard } from "./guards/auth.guard";
 import { GerantService } from "./services/gerant.service";
 import { ConseillerService } from "./services/conseiller.service";
+import { isGerantGuard } from "./guards/is-gerant.guard";
+import { UnauthorizedComponent } from "./components/unauthorized/unauthorized.component";
+import { AnonymGuard } from "./guards/anonym.guard";
 
 @NgModule({
   declarations: [
@@ -47,11 +50,18 @@ import { ConseillerService } from "./services/conseiller.service";
     AddOperationComponent,
     NewOperationComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    UnauthorizedComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
 
-  providers: [GerantService, ConseillerService, AuthGuard],
+  providers: [
+    GerantService,
+    ConseillerService,
+    AuthGuard,
+    isGerantGuard,
+    AnonymGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
