@@ -21,8 +21,7 @@ import { NotFoundComponent } from "./components/not-found/not-found.component";
 const routes: Routes = [
   {
     path: "",
-    component: ClientsComponent,
-    canActivate: [AuthGuard]
+    component: LoginComponent
   },
   {
     path: "employes/new",

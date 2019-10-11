@@ -9,8 +9,6 @@ import { Router } from "@angular/router";
   providedIn: "root"
 })
 export class AuthService {
-  mainRouter = "/clients";
-
   constructor(private http: HttpClient, private router: Router) {}
 
   getUserId() {
@@ -27,8 +25,9 @@ export class AuthService {
         sessionStorage.setItem("x-auth-token", "Bearer " + resp["token"]);
         sessionStorage.setItem("x-auth-id", resp["idUser"]);
         sessionStorage.setItem("x-auth-isGerant", resp["gerant"] ? "1" : "0");
-        if (resp["gerant"]) this.mainRouter = "/employes";
-        this.router.navigate([this.mainRouter]);
+        let mainRouter = "/clients";
+        if (resp["gerant"]) mainRouter = "/employes";
+        this.router.navigate([mainRouter]);
       },
       err => console.log(err.message)
     );

@@ -1,16 +1,18 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">MIAGE</a>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav" *ngIf="authService.isAuthenticated()">
-      <a
-        class="nav-item nav-link"
-        routerLink="/employes"
-        *ngIf="authService.isGerant()"
-        >Employes
-      </a>
-      <a class="nav-item nav-link" routerLink="/clients">Clients</a>
-      <a class="nav-item nav-link" routerLink="/operations">Créer un virment</a>
-      <a class="nav-item nav-link" routerLink="/logout">Logout </a>
-    </div>
-  </div>
-</nav>
+<div
+  class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm"
+>
+  <h5 class="my-0 mr-md-auto font-weight-normal">Miage</h5>
+  <nav class="my-2 my-md-0 mr-md-3" *ngIf="auth.isAuthenticated()">
+    <a class="p-2 text-dark" *ngIf="auth.isGerant()" routerLink="/employes"
+      >Employes</a
+    >
+    <a class="p-2 text-dark" routerLink="/clients">Clients</a>
+    <a class="p-2 text-dark" routerLink="/operations">Créer un virment</a>
+  </nav>
+  <a
+    class="btn btn-outline-danger"
+    *ngIf="auth.isAuthenticated()"
+    routerLink="/logout"
+    >Logout</a
+  >
+</div>

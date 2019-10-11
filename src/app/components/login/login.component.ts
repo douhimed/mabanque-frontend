@@ -8,6 +8,8 @@ import { Router } from "@angular/router";
   styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit {
+  error: boolean = false;
+
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {}
