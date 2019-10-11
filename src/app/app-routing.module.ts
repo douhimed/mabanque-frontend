@@ -16,6 +16,7 @@ import { AuthGuard } from "./guards/auth.guard";
 import { AnonymGuard } from "./guards/anonym.guard";
 import { isGerantGuard } from "./guards/is-gerant.guard";
 import { UnauthorizedComponent } from "./components/unauthorized/unauthorized.component";
+import { NotFoundComponent } from "./components/not-found/not-found.component";
 
 const routes: Routes = [
   {
@@ -71,8 +72,8 @@ const routes: Routes = [
   },
   { path: "login", component: LoginComponent, canActivate: [AnonymGuard] },
   { path: "logout", component: LogoutComponent },
-  { path: "401", component: UnauthorizedComponent },
-  { path: "**", redirectTo: "/401" }
+  { path: "404", component: NotFoundComponent },
+  { path: "**", redirectTo: "/404" }
 ];
 
 @NgModule({

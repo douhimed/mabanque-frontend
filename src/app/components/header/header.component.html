@@ -2,7 +2,10 @@
   <a class="navbar-brand" href="#">MIAGE</a>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav" *ngIf="authService.isAuthenticated()">
-      <a class="nav-item nav-link" routerLink="/" *ngIf="authService.isGerant()"
+      <a
+        class="nav-item nav-link"
+        routerLink="/employes"
+        *ngIf="authService.isGerant()"
         >Employes
       </a>
       <a class="nav-item nav-link" routerLink="/clients">Clients</a>
