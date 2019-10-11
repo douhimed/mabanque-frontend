@@ -14,7 +14,6 @@ export class DetailsClientComponent implements OnInit {
   comptesCourant: Compte[] = [];
   comptesEpargne: Compte[] = [];
   status: string = "comptes";
-
   comptes: any[];
 
   constructor(

@@ -10,18 +10,56 @@ import { OperationsComponent } from "./components/clients/details-client/comptes
 import { AddClientComponent } from "./components/clients/add-client/add-client.component";
 import { EditClientComponent } from "./components/clients/edit-client/edit-client.component";
 import { AddOperationComponent } from "./components/add-operation/add-operation.component";
+import { LoginComponent } from "./components/login/login.component";
+import { LogoutComponent } from "./components/logout/logout.component";
+import { AuthGuard } from "./components/guards/auth.guard";
 
 const routes: Routes = [
-  { path: "", component: EmployesComponent },
-  { path: "employes/new", component: AddEmployeComponent },
-  { path: "employes/:id/edit", component: EditEmployeComponent },
-  { path: "employes/:id", component: DetailsEmployeComponent },
-  { path: "clients/new", component: AddClientComponent },
-  { path: "clients/:id/edit", component: EditClientComponent },
-  { path: "clients/:id", component: DetailsClientComponent },
-  { path: "clients", component: ClientsComponent },
-  { path: "comptes/:id", component: OperationsComponent },
-  { path: "operations", component: AddOperationComponent }
+  { path: "", component: EmployesComponent, canActivate: [AuthGuard] },
+  {
+    path: "employes/new",
+    component: AddEmployeComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "employes/:id/edit",
+    component: EditEmployeComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "employes/:id",
+    component: DetailsEmployeComponent,
+    canActivate: [AuthGuard]
+  },
+  { path: "employes", component: EmployesComponent, canActivate: [AuthGuard] },
+  {
+    path: "clients/new",
+    component: AddClientComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "clients/:id/edit",
+    component: EditClientComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "clients/:id",
+    component: DetailsClientComponent,
+    canActivate: [AuthGuard]
+  },
+  { path: "clients", component: ClientsComponent, canActivate: [AuthGuard] },
+  {
+    path: "comptes/:id",
+    component: OperationsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "operations",
+    component: AddOperationComponent,
+    canActivate: [AuthGuard]
+  },
+  { path: "login", component: LoginComponent },
+  { path: "logout", component: LogoutComponent }
 ];
 
 @NgModule({

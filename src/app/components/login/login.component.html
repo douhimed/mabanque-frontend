@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row justify-content-center mt-4">
+    <div class="col-6">
+      <form #f="ngForm" (ngSubmit)="onLogin(f.value)" class="form-signin">
+        <h1 class="h3 mb-3 font-weight-normal">Authentification</h1>
+        <hr />
+        <label for="inputEmail" class="sr-only">Nom d'utilisateur</label>
+        <input
+          type="email"
+          id="inputEmail"
+          class="form-control"
+          name="username"
+          placeholder="Votre nom d'utilisateur"
+          required
+          ngModel
+          autofocus
+        />
+        <br />
+        <label for="inputPassword" class="sr-only">Mot de passe</label>
+        <input
+          type="password"
+          id="inputPassword"
+          name="password"
+          class="form-control"
+          placeholder="Vote mot de passe"
+          ngModel
+          required
+        />
+        <br />
+        <button class="btn btn-lg btn-primary btn-block" type="submit">
+          Se connecter
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

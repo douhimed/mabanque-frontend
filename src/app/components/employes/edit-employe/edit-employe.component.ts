@@ -23,7 +23,7 @@ export class EditEmployeComponent implements OnInit {
     this.conseillerService.getEmploye(this.employe.id).subscribe(resp => {
       this.employe.nom = resp["nom"];
       this.employe.prenom = resp["prenom"];
-      this.employe.login = resp["login"];
+      this.employe.username = resp["username"];
     });
   }
 

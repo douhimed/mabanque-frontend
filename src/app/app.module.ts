@@ -20,7 +20,12 @@ import { CourantComponent } from "./components/clients/details-client/comptes/co
 import { EpargneComponent } from "./components/clients/details-client/comptes/epargne/epargne.component";
 import { EditClientComponent } from "./components/clients/edit-client/edit-client.component";
 import { AddOperationComponent } from "./components/add-operation/add-operation.component";
-import { NewOperationComponent } from './components/clients/details-client/comptes/new-operation/new-operation.component';
+import { NewOperationComponent } from "./components/clients/details-client/comptes/new-operation/new-operation.component";
+import { LoginComponent } from "./components/login/login.component";
+import { LogoutComponent } from "./components/logout/logout.component";
+import { AuthGuard } from "./components/guards/auth.guard";
+import { GerantService } from "./services/gerant.service";
+import { ConseillerService } from "./services/conseiller.service";
 
 @NgModule({
   declarations: [
@@ -40,10 +45,13 @@ import { NewOperationComponent } from './components/clients/details-client/compt
     EpargneComponent,
     EditClientComponent,
     AddOperationComponent,
-    NewOperationComponent
+    NewOperationComponent,
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
-  providers: [,],
+
+  providers: [GerantService, ConseillerService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

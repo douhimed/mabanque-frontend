@@ -14,51 +14,82 @@ export class ConseillerService {
 
   deleteClient(id: number) {
     const headers = new HttpHeaders({
-      "id-client": id.toString()
+      "id-client": id.toString(),
+      Authorization: this.auth.getToken()
     });
     return this.http.delete(environment.url + "/clients", { headers: headers });
   }
 
   getEmploye(id: number) {
-    return this.http.get(environment.url + "/employes/" + id);
+    const headers = new HttpHeaders({
+      Authorization: this.auth.getToken()
+    });
+    return this.http.get(environment.url + "/employes/" + id, { headers });
   }
 
   updateEmploye(employe: Employe) {
-    return this.http.put(environment.url + "/employes", employe);
+    const headers = new HttpHeaders({
+      Authorization: this.auth.getToken()
+    });
+    return this.http.put(environment.url + "/employes", employe, { headers });
   }
 
   getClients() {
     const headers = new HttpHeaders({
-      "id-user": this.auth.getUserId().toString()
+      "id-user": this.auth.getUserId().toString(),
+      Authorization: this.auth.getToken()
     });
-    return this.http.get(environment.url + "/clients", { headers: headers });
+    return this.http.get(environment.url + "/clients", { headers });
   }
 
   getClient(id: number) {
-    return this.http.get(environment.url + "/clients/" + id);
+    const headers = new HttpHeaders({
+      Authorization: this.auth.getToken()
+    });
+    return this.http.get(environment.url + "/clients/" + id, { headers });
   }
 
   addClient(client: Client) {
-    return this.http.post(environment.url + "/clients", client);
+    const headers = new HttpHeaders({
+      Authorization: this.auth.getToken()
+    });
+    return this.http.post(environment.url + "/clients", client, { headers });
   }
 
   getCompte(id: number) {
-    return this.http.get(environment.url + "/comptes/" + id);
+    const headers = new HttpHeaders({
+      Authorization: this.auth.getToken()
+    });
+    return this.http.get(environment.url + "/comptes/" + id, { headers });
   }
 
   addCompte(compte: Compte) {
-    return this.http.post(environment.url + "/comptes", compte);
+    const headers = new HttpHeaders({
+      Authorization: this.auth.getToken()
+    });
+    return this.http.post(environment.url + "/comptes", compte, { headers });
   }
 
   updateClient(client: Client) {
-    return this.http.put(environment.url + "/clients", client);
+    const headers = new HttpHeaders({
+      Authorization: this.auth.getToken()
+    });
+    return this.http.put(environment.url + "/clients", client, { headers });
   }
 
   deleteCompte(id: number) {
-    return this.http.delete(environment.url + "/comptes/" + id);
+    const headers = new HttpHeaders({
+      Authorization: this.auth.getToken()
+    });
+    return this.http.delete(environment.url + "/comptes/" + id, { headers });
   }
 
-  addOperation(operationInfos: { section: string }) {
-    return this.http.post(environment.url + "/operations", operationInfos);
+  addOperation(operationInfos) {
+    const headers = new HttpHeaders({
+      Authorization: this.auth.getToken()
+    });
+    return this.http.post(environment.url + "/operations", operationInfos, {
+      headers
+    });
   }
 }

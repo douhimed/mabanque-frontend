@@ -6,25 +6,44 @@
       <div class="form-group row">
         <label for="inputNom" class="col-sm-2 col-form-label">De :</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputNom" />
+          <input
+            type="text"
+            class="form-control"
+            id="inputNom"
+            [(ngModel)]="operation.compteOne"
+          />
         </div>
       </div>
       <div class="form-group row">
         <label for="inputPrenom" class="col-sm-2 col-form-label">Vers :</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputPrenom" />
+          <input
+            type="text"
+            class="form-control"
+            id="inputPrenom"
+            [(ngModel)]="operation.compteTwo"
+          />
         </div>
       </div>
       <div class="form-group row">
         <label for="inputPrenom" class="col-sm-2 col-form-label"
-          >Solde :
+          >Montant
         </label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputPrenom" />
+          <input
+            type="text"
+            class="form-control"
+            id="inputPrenom"
+            [(ngModel)]="operation.montant"
+          />
         </div>
       </div>
 
-      <button type="submit" class="btn btn-primary">
+      <button
+        type="button"
+        class="btn btn-secondary btn-lg btn-block"
+        (click)="onAddOperation()"
+      >
         Submit
       </button>
     </div>
