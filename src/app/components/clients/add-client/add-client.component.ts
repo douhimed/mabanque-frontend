@@ -13,7 +13,7 @@ import { Router } from "@angular/router";
 })
 export class AddClientComponent implements OnInit {
   client: Client = new Client();
-  conseillers: Employe[] = [];
+  employes: Employe[] = [];
 
   constructor(
     private gerantService: GerantService,
@@ -26,7 +26,7 @@ export class AddClientComponent implements OnInit {
     this.gerantService
       .getAgentByGerant(this.authSrevice.getUserId())
       .subscribe(resp => {
-        this.conseillers = resp["employes"].filter(
+        this.employes = resp["employes"].filter(
           emp =>
             (emp["type"] === "gerant" && emp["clients"].length <= 10) ||
             (emp["type"] === "conseiller" && emp["clients"].length <= 5)

@@ -8,9 +8,20 @@
         {{ message }}
       </div>
       <div class="form-group">
+        <label for="exampleInputEmail1">Code</label>
+        <input
+          type="text"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          placeholder="Code du compte"
+          [(ngModel)]="compte.codeCompte"
+        />
+      </div>
+      <div class="form-group">
         <label for="exampleInputEmail1">Solde</label>
         <input
-          type="email"
+          type="text"
           class="form-control"
           id="exampleInputEmail1"
           aria-describedby="emailHelp"

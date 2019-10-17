@@ -22,9 +22,9 @@ export class DetailsEmployeComponent implements OnInit {
     this.conseillerService
       .getEmploye(this.route.snapshot.params["id"])
       .subscribe(resp => {
+        this.employe = new Employe(resp["nom"], resp["prenom"]);
         if (resp["clients"].length > 0) {
           this.clients = resp["clients"];
-          this.employe = new Employe(resp["nom"], resp["prenom"]);
         } else this.message = "Cet employé ne gére aucun client";
       });
   }

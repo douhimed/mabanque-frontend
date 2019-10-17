@@ -12,6 +12,7 @@ import { Client } from "src/app/models/client.model";
 export class ClientsComponent implements OnInit {
   clients: Client[] = [];
   disabled: boolean = false;
+  message: string = null;
 
   constructor(
     private conseillerService: ConseillerService,
@@ -45,6 +46,8 @@ export class ClientsComponent implements OnInit {
           (!this.authService.isGerant() && this.clients.length >= 5)
         )
           this.disabled = true;
+        if (this.clients.length <= 0)
+          this.message = "Cette agence a aucun client actuel";
       });
   }
 

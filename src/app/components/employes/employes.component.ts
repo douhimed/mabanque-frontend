@@ -29,7 +29,7 @@ export class EmployesComponent implements OnInit {
     this.gerantService
       .getAgentByGerant(this.authService.getUserId())
       .subscribe(resp => {
-        if (resp["employes"].length <= 0) {
+        if (resp["employes"].length <= 1) {
           this.message = "Cette agence est en cours de création";
         } else {
           this.employes = resp["employes"].filter(

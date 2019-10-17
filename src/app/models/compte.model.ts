@@ -6,6 +6,7 @@ export class Compte {
     public taux?: number,
     public decouvert?: number,
     public clientId?: number,
-    public type?: string
+    public type?: string,
+    public codeCompte?: string
   ) {}
 }

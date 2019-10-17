@@ -80,15 +80,15 @@
         </div>
       </div>
       <div *ngIf="authSrevice.isGerant()">
-        <h5 class="mt-4">Conseiller</h5>
+        <h5 class="mt-4">Responsable</h5>
         <hr />
         <div class="form-row">
           <div class="form-group col-md-6">
-            <select class="form-control" [(ngModel)]="client.conseillerID">
+            <select class="form-control" [(ngModel)]="client.employeID">
               <option
-                *ngFor="let conseiller of conseillers"
-                value="{{ conseiller.id }}"
-                >{{ conseiller.nom + " " + conseiller.prenom }}</option
+                *ngFor="let employe of employes"
+                value="{{ employe.id }}"
+                >{{ employe.nom + " " + employe.prenom }}</option
               >
             </select>
           </div>
@@ -101,7 +101,7 @@
         class="btn btn-secondary btn-lg btn-block"
         (click)="onAddClient()"
       >
-        Submit
+        Ajouter
       </button>
     </div>
   </div>
