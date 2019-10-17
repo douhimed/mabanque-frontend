@@ -23,6 +23,6 @@ export class AddEmployeComponent implements OnInit {
   onAddEmploye() {
     this.gerantService
       .addEmploye(this.employe, this.authService.getUserId())
-      .subscribe(() => this.router.navigate(["/"]));
+      .subscribe(resp => this.router.navigate(["/employes/" + resp["id"]]));
   }
 }

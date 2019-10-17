@@ -24,7 +24,7 @@ export class EditClientComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.fetchConseillers();
+    this.fetchEmploye();
     this.fetchClient();
   }
 
@@ -34,12 +34,12 @@ export class EditClientComponent implements OnInit {
       .subscribe(resp => {
         {
           this.client = resp;
-          this.client.conseillerID = resp["conseiller"]["id"];
+          this.client.employeID = resp["employe"]["id"];
         }
       });
   }
 
-  private fetchConseillers() {
+  private fetchEmploye() {
     this.gerantService
       .getAgentByGerant(this.authSrevice.getUserId())
       .subscribe(

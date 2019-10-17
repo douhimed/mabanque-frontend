@@ -11,6 +11,7 @@ import { Client } from "src/app/models/client.model";
 })
 export class ClientsComponent implements OnInit {
   clients: Client[] = [];
+  disabled: boolean = false;
 
   constructor(
     private conseillerService: ConseillerService,
@@ -19,7 +20,7 @@ export class ClientsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.fetchClients();
+    this.fetchClientsByEmploye();
   }
 
   onDeleteClient(id) {
@@ -31,13 +32,20 @@ export class ClientsComponent implements OnInit {
 
   fetchClients() {
     if (this.authService.isGerant()) this.fetchAllClients();
-    else this.fetchCliantsByConseiller();
+    else this.fetchClientsByEmploye();
   }
 
-  fetchCliantsByConseiller() {
+  fetchClientsByEmploye() {
     this.conseillerService
       .getEmploye(this.authService.getUserId())
-      .subscribe(resp => (this.clients = resp["clients"]));
+      .subscribe(resp => {
+        this.clients = resp["clients"];
+        if (
+          (this.authService.isGerant() && this.clients.length >= 10) ||
+          (!this.authService.isGerant() && this.clients.length >= 5)
+        )
+          this.disabled = true;
+      });
   }
 
   fetchAllClients() {

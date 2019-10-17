@@ -25,17 +25,18 @@ export class AddClientComponent implements OnInit {
   ngOnInit() {
     this.gerantService
       .getAgentByGerant(this.authSrevice.getUserId())
-      .subscribe(
-        resp =>
-          (this.conseillers = resp["employes"].filter(
-            emp => emp["id"] !== this.authSrevice.getUserId()
-          ))
-      );
+      .subscribe(resp => {
+        this.conseillers = resp["employes"].filter(
+          emp =>
+            (emp["type"] === "gerant" && emp["clients"].length <= 10) ||
+            (emp["type"] === "conseiller" && emp["clients"].length <= 5)
+        );
+      });
   }
 
   onAddClient() {
     if (!this.authSrevice.isGerant())
-      this.client.conseillerID = this.authSrevice.getUserId();
+      this.client.employeID = this.authSrevice.getUserId();
     this.conseillerService
       .addClient(this.client)
       .subscribe(resp => this.router.navigate(["/clients/" + resp["id"]]));

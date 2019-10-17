@@ -4,13 +4,15 @@
   </div>
 
   <div class="row">
-    <a
+    <button
       routerLink="/clients/new"
       class="btn btn-success"
       role="button"
       aria-pressed="true"
-      >Nouveau client</a
+      [disabled]="disabled"
     >
+      Nouveau client
+    </button>
   </div>
   <div class="row mt-4">
     <div class="alert alert-success" role="alert" *ngIf="message">
