@@ -10,6 +10,7 @@ import { AuthService } from "./../../services/auth.service";
 export class EmployesComponent implements OnInit {
   employes: any[] = [];
   message: string = "";
+  agenceName: string = "";
 
   constructor(
     private gerantService: GerantService,
@@ -29,6 +30,7 @@ export class EmployesComponent implements OnInit {
     this.gerantService
       .getAgentByGerant(this.authService.getUserId())
       .subscribe(resp => {
+        this.agenceName = resp["name"];
         if (resp["employes"].length <= 1) {
           this.message = "Cette agence est en cours de création";
         } else {
