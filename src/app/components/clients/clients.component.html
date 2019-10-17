@@ -10,6 +10,7 @@
         role="button"
         aria-pressed="true"
         [disabled]="disabled"
+        *ngIf="!authService.isGerant()"
       >
         Nouveau client
       </button>
@@ -56,6 +57,7 @@
               <button
                 class="btn btn-danger  mr-4"
                 (click)="onDeleteClient(client.id)"
+                [disabled]="authService.isGerant()"
               >
                 Supprimer
               </button>

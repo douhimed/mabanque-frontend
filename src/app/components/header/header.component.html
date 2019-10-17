@@ -7,7 +7,9 @@
       >Employes</a
     >
     <a class="p-2 text-dark" routerLink="/clients">Clients</a>
-    <a class="p-2 text-dark" routerLink="/operations">Créer un virment</a>
+    <a class="p-2 text-dark" routerLink="/operations" *ngIf="!auth.isGerant()"
+      >Créer un virment</a
+    >
   </nav>
   <a
     class="btn btn-outline-danger"

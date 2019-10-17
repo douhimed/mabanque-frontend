@@ -3,6 +3,9 @@
     <div class="col-6 ">
       <h3 class="mt-4">Créer un virment</h3>
       <hr />
+      <div class="alert alert-warning" role="alert" *ngIf="message">
+        {{ message }}
+      </div>
       <div class="form-group row">
         <label for="inputNom" class="col-sm-2 col-form-label">De :</label>
         <div class="form-group col-md-6">

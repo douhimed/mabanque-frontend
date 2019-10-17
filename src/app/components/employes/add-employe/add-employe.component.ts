@@ -21,8 +21,9 @@ export class AddEmployeComponent implements OnInit {
   ngOnInit() {}
 
   onAddEmploye() {
+    this.employe.idResponsable = this.authService.getUserId();
     this.gerantService
-      .addEmploye(this.employe, this.authService.getUserId())
+      .addEmploye(this.employe)
       .subscribe(resp => this.router.navigate(["/employes/" + resp["id"]]));
   }
 }

@@ -9,12 +9,23 @@ import { Router } from "@angular/router";
 })
 export class LoginComponent implements OnInit {
   error: boolean = false;
+  message: string = null;
 
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {}
 
   onLogin(user: { username: string; password: string }) {
-    this.authService.authenticationHandler(user);
+    this.authService.authenticationHandler(user).subscribe(
+      resp => {
+        this.authService.storeSession(resp);
+        let mainRouter = "/clients";
+        if (resp["gerant"]) mainRouter = "/employes";
+        this.router.navigate([mainRouter]);
+      },
+      err => {
+        this.message = "Login/Mot de passe est incorrect";
+      }
+    );
   }
 }

@@ -8,9 +8,9 @@ import { AuthService } from "./../../services/auth.service";
   styleUrls: ["./employes.component.css"]
 })
 export class EmployesComponent implements OnInit {
-  employes: any[] = [];
+  employes: any = null;
   message: string = "";
-  agenceName: string = "";
+  disabled: boolean = false;
 
   constructor(
     private gerantService: GerantService,
@@ -30,13 +30,11 @@ export class EmployesComponent implements OnInit {
     this.gerantService
       .getAgentByGerant(this.authService.getUserId())
       .subscribe(resp => {
-        this.agenceName = resp["name"];
-        if (resp["employes"].length <= 1) {
-          this.message = "Cette agence est en cours de création";
+        this.employes = resp;
+        if (this.employes.length <= 0) {
+          this.message = "Ce gérant ne gére aucun conseiller";
         } else {
-          this.employes = resp["employes"].filter(
-            emp => emp["id"] !== this.authService.getUserId()
-          );
+          if (this.employes.length >= 10) this.disabled = true;
         }
       });
   }

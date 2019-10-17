@@ -18,6 +18,7 @@ export class AddOperationComponent implements OnInit {
   comptesTwo: Compte[] = [];
   disabledCompteTwo: boolean = true;
   disabledMontant: boolean = true;
+  message: string = null;
 
   constructor(
     private router: Router,
@@ -54,6 +55,9 @@ export class AddOperationComponent implements OnInit {
     this.operation.type = "virment";
     this.conseillerService
       .addOperation(this.operation)
-      .subscribe(resp => this.router.navigate(["comptes/" + resp["id"]]));
+      .subscribe(
+        resp => this.router.navigate(["comptes/" + resp["id"]]),
+        err => (this.message = err.error.message)
+      );
   }
 }

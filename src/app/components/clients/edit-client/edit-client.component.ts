@@ -13,7 +13,8 @@ import { GerantService } from "src/app/services/gerant.service";
 })
 export class EditClientComponent implements OnInit {
   client: Client = new Client();
-  conseillers: Employe[] = [];
+  conseillers: any = [];
+  disabled: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,6 +27,7 @@ export class EditClientComponent implements OnInit {
   ngOnInit() {
     this.fetchEmploye();
     this.fetchClient();
+    if (this.authSrevice.isGerant()) this.disabled = true;
   }
 
   private fetchClient() {
@@ -34,7 +36,7 @@ export class EditClientComponent implements OnInit {
       .subscribe(resp => {
         {
           this.client = resp;
-          this.client.employeID = resp["employe"]["id"];
+          this.client.conseillerID = resp["employe"]["id"];
         }
       });
   }
@@ -42,15 +44,17 @@ export class EditClientComponent implements OnInit {
   private fetchEmploye() {
     this.gerantService
       .getAgentByGerant(this.authSrevice.getUserId())
-      .subscribe(
-        resp =>
-          (this.conseillers = resp["employes"].filter(
-            emp => emp["id"] !== this.authSrevice.getUserId()
-          ))
-      );
+      .subscribe(resp => {
+        this.conseillers = resp;
+        this.conseillers.filter(
+          emp => emp["id"] !== this.authSrevice.getUserId()
+        );
+      });
   }
 
   onUpdateClient() {
+    console.log(this.client);
+
     this.conseillerService
       .updateClient(this.client)
       .subscribe(resp =>

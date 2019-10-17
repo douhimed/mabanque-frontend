@@ -10,6 +10,6 @@ export class Client {
     public codePostal?: number,
     public ville?: string,
     public comptes?: Compte[],
-    public employeID?: number
+    public conseillerID?: number
   ) {}
 }

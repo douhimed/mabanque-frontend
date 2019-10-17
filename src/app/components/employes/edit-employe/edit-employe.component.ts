@@ -10,7 +10,7 @@ import { ConseillerService } from "./../../../services/conseiller.service";
   styleUrls: ["./edit-employe.component.css"]
 })
 export class EditEmployeComponent implements OnInit {
-  employe: Employe = new Employe("", "");
+  employe: Employe = new Employe();
 
   constructor(
     public route: ActivatedRoute,
@@ -21,17 +21,15 @@ export class EditEmployeComponent implements OnInit {
   ngOnInit() {
     this.employe.id = this.route.snapshot.params["id"];
     this.conseillerService.getEmploye(this.employe.id).subscribe(resp => {
-      this.employe.nom = resp["nom"];
-      this.employe.prenom = resp["prenom"];
-      this.employe.username = resp["username"];
+      this.employe = resp;
     });
   }
 
   onUpdateEmploye() {
     this.conseillerService.updateEmploye(this.employe).subscribe(() => {
-      this.employe.nom = "";
-      this.employe.prenom = "";
-      this.router.navigate(["/"]);
+      let id = this.employe.id;
+      this.employe = new Employe();
+      this.router.navigate(["/employes/" + id]);
     });
   }
 }

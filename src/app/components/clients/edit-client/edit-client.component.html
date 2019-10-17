@@ -11,6 +11,7 @@
             class="form-control"
             id="inputEmail4"
             placeholder="Nom"
+            [disabled]="disabled"
             [(ngModel)]="client.nom"
           />
         </div>
@@ -21,6 +22,7 @@
             class="form-control"
             id="inputPassword4"
             placeholder="Prenom"
+            [disabled]="disabled"
             [(ngModel)]="client.prenom"
           />
         </div>
@@ -35,6 +37,7 @@
             class="form-control"
             id="inputEmail41"
             placeholder="Nom"
+            [disabled]="disabled"
             [(ngModel)]="client.tel"
           />
         </div>
@@ -45,6 +48,7 @@
             class="form-control"
             id="inputPassword41"
             placeholder="Prenom"
+            [disabled]="disabled"
             [(ngModel)]="client.email"
           />
         </div>
@@ -56,6 +60,7 @@
           class="form-control"
           id="inputAddress"
           placeholder="1234 Main St"
+          [disabled]="disabled"
           [(ngModel)]="client.adresse"
         />
       </div>
@@ -66,6 +71,7 @@
             type="text"
             class="form-control"
             id="inputCity"
+            [disabled]="disabled"
             [(ngModel)]="client.ville"
           />
         </div>
@@ -75,6 +81,7 @@
             type="text"
             class="form-control"
             id="inputZip"
+            [disabled]="disabled"
             [(ngModel)]="client.codePostal"
           />
         </div>
@@ -88,7 +95,7 @@
               <option
                 *ngFor="let conseiller of conseillers"
                 value="{{ conseiller.id }}"
-                [ngClass]="{ selected: conseiller.id === client.conseillerID }"
+                [ngClass]="{ selected: conseiller.id == client.conseillerID }"
                 >{{ conseiller.nom + " " + conseiller.prenom }}</option
               >
             </select>

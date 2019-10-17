@@ -21,7 +21,7 @@ export class ClientsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.fetchClientsByEmploye();
+    this.fetchClients();
   }
 
   onDeleteClient(id) {
@@ -41,24 +41,21 @@ export class ClientsComponent implements OnInit {
       .getEmploye(this.authService.getUserId())
       .subscribe(resp => {
         this.clients = resp["clients"];
-        if (
-          (this.authService.isGerant() && this.clients.length >= 10) ||
-          (!this.authService.isGerant() && this.clients.length >= 5)
-        )
+        if (!this.authService.isGerant() && this.clients.length >= 5)
           this.disabled = true;
         if (this.clients.length <= 0)
-          this.message = "Cette agence a aucun client actuel";
+          this.message = "Ce conseiller ne gére aucun client";
       });
   }
 
   fetchAllClients() {
-    this.gerantService
-      .getAgentByGerant(this.authService.getUserId())
-      .subscribe(resp => {
-        resp["employes"].forEach(employe => {
-          if (employe["id"] !== this.authService.getUserId())
-            this.clients = this.clients.concat(employe["clients"]);
-        });
+    this.gerantService.getClientsByAgence().subscribe(resp => {
+      resp["employes"].forEach(employe => {
+        if (employe["id"] !== this.authService.getUserId())
+          this.clients = this.clients.concat(employe["clients"]);
       });
+      if (this.clients.length <= 0)
+        this.message = "Cette agence n'a aucun client";
+    });
   }
 }

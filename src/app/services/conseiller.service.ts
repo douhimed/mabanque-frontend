@@ -28,8 +28,10 @@ export class ConseillerService {
   }
 
   updateEmploye(employe: Employe) {
+    let idGerant = this.auth.isGerant() ? this.auth.getUserId().toString() : 0;
     const headers = new HttpHeaders({
-      Authorization: this.auth.getToken()
+      Authorization: this.auth.getToken(),
+      "id-user": idGerant.toString()
     });
     return this.http.put(environment.url + "/employes", employe, { headers });
   }

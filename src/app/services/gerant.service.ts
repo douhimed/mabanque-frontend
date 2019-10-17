@@ -19,6 +19,14 @@ export class GerantService {
     return this.http.get(environment.url + "/gerants", { headers });
   }
 
+  getClientsByAgence() {
+    const headers = new HttpHeaders({
+      "id-user": this.auth.getUserId().toString(),
+      Authorization: this.auth.getToken()
+    });
+    return this.http.get(environment.url + "/agences", { headers });
+  }
+
   deleteEmploye(id) {
     const headers = new HttpHeaders({
       "id-user": this.auth.getUserId().toString(),
@@ -28,9 +36,11 @@ export class GerantService {
     return this.http.delete(environment.url + "/employes/" + id, { headers });
   }
 
-  addEmploye(employe: Employe, idGerant: number) {
+  addEmploye(employe: Employe) {
+    console.log(employe);
+
     const headers = new HttpHeaders({
-      "id-user": idGerant.toString(),
+      "id-user": employe.idResponsable.toString(),
       Authorization: this.auth.getToken()
     });
     return this.http.post(environment.url + "/employes", employe, { headers });

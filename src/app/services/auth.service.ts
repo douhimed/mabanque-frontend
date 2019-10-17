@@ -20,17 +20,7 @@ export class AuthService {
   }
 
   authenticationHandler(user) {
-    return this.http.post(environment.url + "/authenticate", user).subscribe(
-      resp => {
-        sessionStorage.setItem("x-auth-token", "Bearer " + resp["token"]);
-        sessionStorage.setItem("x-auth-id", resp["idUser"]);
-        sessionStorage.setItem("x-auth-isGerant", resp["gerant"] ? "1" : "0");
-        let mainRouter = "/clients";
-        if (resp["gerant"]) mainRouter = "/employes";
-        this.router.navigate([mainRouter]);
-      },
-      err => console.log(err.message)
-    );
+    return this.http.post(environment.url + "/authenticate", user);
   }
 
   isAuthenticated() {
@@ -47,5 +37,11 @@ export class AuthService {
     sessionStorage.removeItem("x-auth-token");
     sessionStorage.removeItem("x-auth-id");
     sessionStorage.removeItem("x-auth-isGerant");
+  }
+
+  storeSession(resp) {
+    sessionStorage.setItem("x-auth-token", "Bearer " + resp["token"]);
+    sessionStorage.setItem("x-auth-id", resp["idUser"]);
+    sessionStorage.setItem("x-auth-isGerant", resp["gerant"] ? "1" : "0");
   }
 }

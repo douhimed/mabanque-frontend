@@ -6,6 +6,7 @@ export class Employe {
     public username?: string,
     public password?: string,
     public email?: string,
-    public adresse?: string
+    public adresse?: string,
+    public idResponsable?: number
   ) {}
 }
