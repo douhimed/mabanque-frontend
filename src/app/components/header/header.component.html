@@ -3,6 +3,9 @@
 >
   <h5 class="my-0 mr-md-auto font-weight-normal">PROXY BANQUE</h5>
   <nav class="my-2 my-md-0 mr-md-3" *ngIf="auth.isAuthenticated()">
+    <a class="p-2 text-dark" *ngIf="auth.isGerant()" routerLink="/dashboard"
+      >Accueil</a
+    >
     <a class="p-2 text-dark" *ngIf="auth.isGerant()" routerLink="/employes"
       >Employes</a
     >

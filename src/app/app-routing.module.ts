@@ -15,8 +15,8 @@ import { LogoutComponent } from "./components/logout/logout.component";
 import { AuthGuard } from "./guards/auth.guard";
 import { AnonymGuard } from "./guards/anonym.guard";
 import { isGerantGuard } from "./guards/is-gerant.guard";
-import { UnauthorizedComponent } from "./components/unauthorized/unauthorized.component";
 import { NotFoundComponent } from "./components/not-found/not-found.component";
+import { DashboardComponent } from "./components/dashboard/dashboard.component";
 
 const routes: Routes = [
   {
@@ -68,6 +68,11 @@ const routes: Routes = [
     path: "operations",
     component: AddOperationComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: "dashboard",
+    component: DashboardComponent,
+    canActivate: [AuthGuard, isGerantGuard]
   },
   { path: "login", component: LoginComponent, canActivate: [AnonymGuard] },
   { path: "logout", component: LogoutComponent },

@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
       resp => {
         this.authService.storeSession(resp);
         let mainRouter = "/clients";
-        if (resp["gerant"]) mainRouter = "/employes";
+        if (resp["gerant"]) mainRouter = "/dashboard";
         this.router.navigate([mainRouter]);
       },
       err => {

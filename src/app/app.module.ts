@@ -30,6 +30,7 @@ import { isGerantGuard } from "./guards/is-gerant.guard";
 import { UnauthorizedComponent } from "./components/unauthorized/unauthorized.component";
 import { AnonymGuard } from "./guards/anonym.guard";
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     LoginComponent,
     LogoutComponent,
     UnauthorizedComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    DashboardComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
 

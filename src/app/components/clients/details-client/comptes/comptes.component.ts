@@ -3,6 +3,7 @@ import { Compte } from "./../../../../models/compte.model";
 import { ConseillerService } from "./../../../../services/conseiller.service";
 import { Operation } from "src/app/models/operation.model";
 import { Router } from "@angular/router";
+import { AuthService } from "./../../../../services/auth.service";
 
 @Component({
   selector: "app-comptes",
@@ -21,7 +22,8 @@ export class ComptesComponent implements OnInit {
 
   constructor(
     private conseillerService: ConseillerService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {}
@@ -32,6 +34,7 @@ export class ComptesComponent implements OnInit {
 
   onSavingOperation(operation: any) {
     this.operationInfos = { ...operation };
+    this.operationInfos["conseillerID"] = this.authService.getUserId();
   }
 
   afterSavingOperation() {
