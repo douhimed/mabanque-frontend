@@ -45,4 +45,13 @@ export class GerantService {
     });
     return this.http.post(environment.url + "/employes", employe, { headers });
   }
+
+  getFullAgentByGerant(idGerant: number) {
+    const headers = new HttpHeaders({
+      "id-user": idGerant.toString(),
+      Authorization: this.auth.getToken()
+    });
+
+    return this.http.get(environment.url + "/agences", { headers });
+  }
 }

@@ -12,6 +12,7 @@ export class OperationsComponent implements OnInit {
   compte: Compte = new Compte();
   isCourant: boolean = true;
   idClient: number;
+  message: string = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,8 +25,12 @@ export class OperationsComponent implements OnInit {
       .getCompte(this.route.snapshot.params["id"])
       .subscribe(resp => {
         this.compte = resp;
-        this.idClient = resp["client"]["id"];
-        if (this.compte["taux"]) this.isCourant = false;
+        if (this.compte["operations"].length <= 0)
+          this.message = "Ce compte a aucun opération";
+        else {
+          this.idClient = resp["client"]["id"];
+          if (this.compte["taux"]) this.isCourant = false;
+        }
       });
   }
 

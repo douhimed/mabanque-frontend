@@ -3,6 +3,7 @@ import { ConseillerService } from "./../../services/conseiller.service";
 import { AuthService } from "./../../services/auth.service";
 import { GerantService } from "src/app/services/gerant.service";
 import { Client } from "src/app/models/client.model";
+import { Employe } from "src/app/models/employe.model";
 
 @Component({
   selector: "app-clients",
@@ -13,6 +14,7 @@ export class ClientsComponent implements OnInit {
   clients: Client[] = [];
   disabled: boolean = false;
   message: string = null;
+  user: Employe = new Employe();
 
   constructor(
     private conseillerService: ConseillerService,
@@ -40,6 +42,8 @@ export class ClientsComponent implements OnInit {
     this.conseillerService
       .getEmploye(this.authService.getUserId())
       .subscribe(resp => {
+        this.user.nom = resp["nom"];
+        this.user.prenom = resp["prenom"];
         this.clients = resp["clients"];
         if (!this.authService.isGerant() && this.clients.length >= 5)
           this.disabled = true;

@@ -7,6 +7,7 @@ export class Compte {
     public decouvert?: number,
     public clientId?: number,
     public type?: string,
-    public codeCompte?: string
+    public codeCompte?: string,
+    public carteType?: string
   ) {}
 }

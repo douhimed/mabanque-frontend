@@ -40,6 +40,19 @@
           [(ngModel)]="compte.decouvert"
         />
       </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">Carte</label>
+        </div>
+        <select
+          class="custom-select"
+          id="inputGroupSelect01"
+          [(ngModel)]="compte.carteType"
+        >
+          <option value="Premier" selected>Premier</option>
+          <option value="Electron">Electron</option>
+        </select>
+      </div>
       <button class="btn btn-success" (click)="onSaveCompte()">Submit</button>
     </div>
   </div>

@@ -1,11 +1,61 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <h3>Bienvenue DOUHI Mohammed</h3>
+      <h4>Bienvenue {{ user.nom + " " + user.prenom }}</h4>
     </div>
   </div>
   <hr />
   <div class="row">
-    <div class="col-12"></div>
+    <div class="col-12">
+      <div class="card ">
+        <div class="card-header text-white bg-info">
+          <strong>{{ agence.name }}</strong>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-3">
+              <div class="card ">
+                <div class="card-header text-white bg-secondary  ">
+                  Numéro de compte
+                </div>
+                <ul class="list-group list-group-flush ">
+                  <li class="list-group-item">{{ compte.code }}</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="card">
+                <div class="card-header text-white bg-secondary">
+                  Solde actuel
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">{{ compte.solde }}</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="card">
+                <div class="card-header text-white bg-secondary">
+                  Nombre des employés
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">{{ employes.length }}</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="card">
+                <div class="card-header text-white bg-secondary">
+                  Nombre des clients
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">{{ clients.length }}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

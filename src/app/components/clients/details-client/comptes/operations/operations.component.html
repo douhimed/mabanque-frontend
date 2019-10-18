@@ -20,6 +20,9 @@
             <p>
               Decouvert : <strong>{{ compte.decouvert }}</strong>
             </p>
+            <p>
+              Type de carte : <strong>{{ compte.carteType }}</strong>
+            </p>
           </div>
 
           <div *ngIf="!isCourant">
@@ -41,7 +44,10 @@
       <div class="card">
         <div class="card-header"><h5>Opérations</h5></div>
         <div class="card-body">
-          <table class="table table-stripped">
+          <div class="alert alert-warning" role="alert" *ngIf="message">
+            {{ message }}
+          </div>
+          <table class="table table-stripped" *ngIf="!message">
             <thead class="thead-light">
               <tr>
                 <th scope="col">#</th>
