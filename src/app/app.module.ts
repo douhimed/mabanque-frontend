@@ -29,8 +29,8 @@ import { ConseillerService } from "./services/conseiller.service";
 import { isGerantGuard } from "./guards/is-gerant.guard";
 import { UnauthorizedComponent } from "./components/unauthorized/unauthorized.component";
 import { AnonymGuard } from "./guards/anonym.guard";
-import { NotFoundComponent } from './components/not-found/not-found.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { NotFoundComponent } from "./components/not-found/not-found.component";
+import { DashboardComponent } from "./components/dashboard/dashboard.component";
 
 @NgModule({
   declarations: [

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mb-4">
   <div class="row">
     <div class="col-12">
       <h4>Bienvenue {{ user.nom + " " + user.prenom }}</h4>
@@ -13,17 +13,17 @@
         </div>
         <div class="card-body">
           <div class="row">
-            <div class="col-3">
+            <div class="col-2">
               <div class="card ">
                 <div class="card-header text-white bg-secondary  ">
-                  Numéro de compte
+                  Compte
                 </div>
                 <ul class="list-group list-group-flush ">
                   <li class="list-group-item">{{ compte.code }}</li>
                 </ul>
               </div>
             </div>
-            <div class="col-3">
+            <div class="col-2">
               <div class="card">
                 <div class="card-header text-white bg-secondary">
                   Solde actuel
@@ -33,27 +33,75 @@
                 </ul>
               </div>
             </div>
-            <div class="col-3">
+            <div class="col-2">
               <div class="card">
                 <div class="card-header text-white bg-secondary">
-                  Nombre des employés
+                  Employés
                 </div>
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item">{{ employes.length }}</li>
                 </ul>
               </div>
             </div>
-            <div class="col-3">
+            <div class="col-2">
               <div class="card">
                 <div class="card-header text-white bg-secondary">
-                  Nombre des clients
+                  NClients
                 </div>
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item">{{ clients.length }}</li>
                 </ul>
               </div>
             </div>
+            <div class="col-2">
+              <div class="card">
+                <div class="card-header text-white bg-secondary">
+                  Opérations
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">{{ operations.length }}</li>
+                </ul>
+              </div>
+            </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-12">
+      <div class="card ">
+        <div class="card-header text-white bg-info">
+          <strong>Opération de dérnier mois</strong>
+        </div>
+        <div class="card-body">
+          <table class="table table-stripped" *ngIf="!message">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Date</th>
+                <th scope="col">Montant</th>
+                <th scope="col">Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let operation of operations">
+                <th scope="row">{{ operation.id }}</th>
+                <td>{{ operation.dateOperation | date: "d/M/yy, h:mm:ss" }}</td>
+                <td>{{ operation.montant }}</td>
+                <td>
+                  <span
+                    class="badge badge-info p-2"
+                    [ngClass]="{
+                      'badge-dark': operation.type === 'Virment'
+                    }"
+                    >{{ operation.type }}</span
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

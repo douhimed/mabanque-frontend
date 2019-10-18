@@ -5,6 +5,7 @@ export class Operation {
     public montant?: number,
     public compteOne?: number,
     public compteTwo?: number,
-    public conseillerID?: number
+    public conseillerID?: number,
+    public date?: Date
   ) {}
 }
