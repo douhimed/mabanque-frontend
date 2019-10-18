@@ -94,4 +94,11 @@ export class ConseillerService {
       headers
     });
   }
+
+  updateCompte(compte: Compte) {
+    const headers = new HttpHeaders({
+      Authorization: this.auth.getToken()
+    });
+    return this.http.put(environment.url + "/comptes", compte, { headers });
+  }
 }

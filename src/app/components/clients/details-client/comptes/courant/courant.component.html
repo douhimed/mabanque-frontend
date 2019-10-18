@@ -7,6 +7,7 @@
           <tr>
             <th scope="col">Code</th>
             <th scope="col">Solde</th>
+            <th>Carte</th>
             <th></th>
           </tr>
         </thead>
@@ -14,6 +15,17 @@
           <tr *ngFor="let compte of comptes">
             <th scope="row">{{ compte.code }}</th>
             <td>{{ compte.solde }}</td>
+            <td>
+              <select
+                class="custom-select"
+                id="inputGroupSelect01"
+                [(ngModel)]="compte.carteType"
+                (change)="updateCarteType(compte)"
+              >
+                <option value="Premier" selected>Premier</option>
+                <option value="Electron">Electron</option>
+              </select>
+            </td>
             <td>
               <a
                 routerLink="/comptes/{{ compte.id }}"

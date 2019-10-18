@@ -10,7 +10,7 @@ import { Compte } from "./../../../../../models/compte.model";
 })
 export class OperationsComponent implements OnInit {
   compte: Compte = new Compte();
-  isCourant: boolean = true;
+  isCourant: boolean = false;
   idClient: number;
   message: string = null;
 
@@ -29,7 +29,7 @@ export class OperationsComponent implements OnInit {
         if (this.compte["operations"].length <= 0)
           this.message = "Ce compte a aucun opération";
         else {
-          if (this.compte["taux"]) this.isCourant = false;
+          if (resp["taux"] <= 0) this.isCourant = true;
         }
       });
   }
