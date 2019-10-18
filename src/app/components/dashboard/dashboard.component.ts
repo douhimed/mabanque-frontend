@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit {
   clients: any[] = null;
   user: Employe = new Employe();
   operations: any[] = [];
+  message: string = null;
 
   constructor(
     private gerantService: GerantService,
@@ -52,7 +53,8 @@ export class DashboardComponent implements OnInit {
           if (employe["id"] === this.authService.getUserId())
             this.user = employe;
         });
-        console.log("length : " + this.operations.length);
+        if (this.operations.length <= 0)
+          this.message = "Aucune opération pour le mois dernier";
       });
   }
 

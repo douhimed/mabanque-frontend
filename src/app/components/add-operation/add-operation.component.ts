@@ -52,7 +52,7 @@ export class AddOperationComponent implements OnInit {
   }
 
   onAddOperation() {
-    this.operation.type = "virment";
+    this.operation.type = "virement";
     this.operation.conseillerID = this.authService.getUserId();
     this.conseillerService
       .addOperation(this.operation)

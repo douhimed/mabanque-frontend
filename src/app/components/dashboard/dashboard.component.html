@@ -24,6 +24,18 @@
               </div>
             </div>
             <div class="col-2">
+              <div class="card ">
+                <div class="card-header text-white bg-secondary  ">
+                  Date création
+                </div>
+                <ul class="list-group list-group-flush ">
+                  <li class="list-group-item">
+                    {{ agence.creationDate | date: "d/M/yy" }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-2">
               <div class="card">
                 <div class="card-header text-white bg-secondary">
                   Solde actuel
@@ -76,6 +88,9 @@
           <strong>Opération de dérnier mois</strong>
         </div>
         <div class="card-body">
+          <div class="alert alert-warning" role="alert" *ngIf="message">
+            {{ message }}
+          </div>
           <table class="table table-stripped" *ngIf="!message">
             <thead class="thead-light">
               <tr>
@@ -94,7 +109,7 @@
                   <span
                     class="badge badge-info p-2"
                     [ngClass]="{
-                      'badge-dark': operation.type === 'Virment'
+                      'badge-dark': operation.type === 'Versement'
                     }"
                     >{{ operation.type }}</span
                   >
