@@ -25,10 +25,10 @@ export class OperationsComponent implements OnInit {
       .getCompte(this.route.snapshot.params["id"])
       .subscribe(resp => {
         this.compte = resp;
+        this.idClient = resp["client"]["id"];
         if (this.compte["operations"].length <= 0)
           this.message = "Ce compte a aucun opération";
         else {
-          this.idClient = resp["client"]["id"];
           if (this.compte["taux"]) this.isCourant = false;
         }
       });

@@ -25,8 +25,7 @@ export class AddCompteComponent implements OnInit {
   onSaveCompte() {
     this.compte.clientId = this.clientID;
     this.compte.type = this.status;
-    console.log(this.compte);
-
+    this.compte.taux = 1000;
     this.conseillerSrvice.addCompte(this.compte).subscribe(() => {
       this.message = "Le compte est bien enregistré";
       this.compte = new Compte();

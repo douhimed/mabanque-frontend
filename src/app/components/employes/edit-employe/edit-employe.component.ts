@@ -22,6 +22,8 @@ export class EditEmployeComponent implements OnInit {
     this.employe.id = this.route.snapshot.params["id"];
     this.conseillerService.getEmploye(this.employe.id).subscribe(resp => {
       this.employe = resp;
+
+      console.log(this.employe);
     });
   }
 

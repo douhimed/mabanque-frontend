@@ -48,19 +48,21 @@
           >
             Informations
           </button>
+          <!--
           <button
             class="btn btn-success  mr-4"
             aria-pressed="true"
             (click)="onChangeStatus('cc')"
           >
             Nouveau Compte Courant
-          </button>
+          </button> -->
           <button
             class="btn btn-success "
             aria-pressed="true"
             (click)="onChangeStatus('ce')"
+            *ngIf="comptesEpargneStatus"
           >
-            Nouveau Compte Epargne
+            Ajouter Compte Epargne
           </button>
         </div>
       </div>

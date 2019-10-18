@@ -15,6 +15,7 @@ export class DetailsClientComponent implements OnInit {
   comptesEpargne: Compte[] = [];
   status: string = "comptes";
   comptes: any[];
+  comptesEpargneStatus: boolean = true;
 
   constructor(
     private conseillerService: ConseillerService,
@@ -61,5 +62,6 @@ export class DetailsClientComponent implements OnInit {
         ? this.comptesEpargne.push(compte)
         : this.comptesCourant.push(compte)
     );
+    this.comptesEpargneStatus = this.comptesEpargne.length <= 0 ? true : false;
   }
 }
