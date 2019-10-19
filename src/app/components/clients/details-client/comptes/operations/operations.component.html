@@ -16,13 +16,7 @@
             Solde : <strong>{{ compte.solde }}</strong>
           </p>
           <p>
-            Decouvert : <strong>{{ compte.decouvert || "NaN" }}</strong>
-          </p>
-          <p>
-            Type de carte : <strong>{{ compte.carteType }}</strong>
-          </p>
-          <p>
-            taux : <strong>{{ compte.taux || "NaN" }}</strong>
+            Type de carte : <strong>{{ compte.carteType || "----" }}</strong>
           </p>
           <hr />
           <div class="text-center">

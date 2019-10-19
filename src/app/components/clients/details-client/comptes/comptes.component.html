@@ -1,37 +1,46 @@
 <div class="container">
-  <div *ngIf="status === 'comptes'">
-    <div>
-      <app-new-operation
-        *ngIf="operationInfos.section === 'cc'"
-        [infos]="operationInfos"
-        (onAddedOperation)="afterSavingOperation($event)"
-      ></app-new-operation>
-      <app-courant
-        *ngIf="comptesCourant && operationInfos.section !== 'cc'"
-        (onAddOperation)="onSavingOperation($event)"
-        [comptes]="comptesCourant"
-      ></app-courant>
+  <div class="row">
+    <div class="col-12">
+      <div class="alert alert-danger" role="alert" *ngIf="message">
+        {{ message }}
+      </div>
     </div>
+    <div class="col-12">
+      <div *ngIf="status === 'comptes'">
+        <div>
+          <app-new-operation
+            *ngIf="operationInfos.section === 'cc'"
+            [infos]="operationInfos"
+            (onAddedOperation)="afterSavingOperation($event)"
+          ></app-new-operation>
+          <app-courant
+            *ngIf="comptesCourant && operationInfos.section !== 'cc'"
+            (onAddOperation)="onSavingOperation($event)"
+            [comptes]="comptesCourant"
+          ></app-courant>
+        </div>
 
-    <div>
-      <app-new-operation
-        *ngIf="operationInfos.section === 'ce'"
-        [infos]="operationInfos"
-        (onAddedOperation)="afterSavingOperation($event)"
-      ></app-new-operation>
-      <app-epargne
-        *ngIf="comptesEpargne && operationInfos.section !== 'ce'"
-        (onAddOperation)="onSavingOperation($event)"
-        [comptes]="comptesEpargne"
-      ></app-epargne>
+        <div>
+          <app-new-operation
+            *ngIf="operationInfos.section === 'ce'"
+            [infos]="operationInfos"
+            (onAddedOperation)="afterSavingOperation($event)"
+          ></app-new-operation>
+          <app-epargne
+            *ngIf="comptesEpargne && operationInfos.section !== 'ce'"
+            (onAddOperation)="onSavingOperation($event)"
+            [comptes]="comptesEpargne"
+          ></app-epargne>
+        </div>
+      </div>
+      <div>
+        <app-add-compte
+          (onAddCompte)="onAddedCompte($event)"
+          *ngIf="status !== 'comptes'"
+          [status]="status"
+          [clientID]="clientID"
+        ></app-add-compte>
+      </div>
     </div>
-  </div>
-  <div>
-    <app-add-compte
-      (onAddCompte)="onAddedCompte($event)"
-      *ngIf="status !== 'comptes'"
-      [status]="status"
-      [clientID]="clientID"
-    ></app-add-compte>
   </div>
 </div>

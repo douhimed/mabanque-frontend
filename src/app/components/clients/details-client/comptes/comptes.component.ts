@@ -19,6 +19,7 @@ export class ComptesComponent implements OnInit {
   @Output() onSaveCompte = new EventEmitter<boolean>();
   operation: Operation = new Operation();
   operationInfos = { section: "" };
+  message: string = null;
 
   constructor(
     private conseillerService: ConseillerService,
@@ -38,10 +39,15 @@ export class ComptesComponent implements OnInit {
   }
 
   afterSavingOperation() {
-    this.conseillerService.addOperation(this.operationInfos).subscribe(resp => {
-      this.status = "comptes";
-      this.operationInfos.section = "";
-      this.router.navigate(["/comptes/" + resp["id"]]);
-    });
+    this.conseillerService.addOperation(this.operationInfos).subscribe(
+      resp => {
+        this.status = "comptes";
+        this.operationInfos.section = "";
+        this.router.navigate(["/comptes/" + resp["id"]]);
+      },
+      err => {
+        this.message = err.error.message;
+      }
+    );
   }
 }
