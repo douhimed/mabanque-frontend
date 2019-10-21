@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { Compte } from "src/app/models/compte.model";
 import { ConseillerService } from "./../../../../../services/conseiller.service";
+import { AuthService } from './../../../../../services/auth.service';
 
 @Component({
   selector: "app-courant",
@@ -11,7 +12,7 @@ export class CourantComponent implements OnInit {
   @Input() comptes: Compte[] = [];
   @Output() onAddOperation = new EventEmitter<any>();
 
-  constructor(private conseillServices: ConseillerService) {}
+  constructor(private conseillServices: ConseillerService, private auth:AuthService) {}
 
   ngOnInit() {}
 

@@ -35,12 +35,14 @@
               <button
                 class="btn btn-warning mr-1"
                 (click)="onVerser(compte.id, 'cc')"
+                *ngIf="!auth.isGerant()"
               >
                 Verser
               </button>
               <button
                 class="btn btn-warning"
                 (click)="onRetirer(compte.id, 'cc')"
+                *ngIf="!auth.isGerant()"
               >
                 Retirer
               </button>
