@@ -60,7 +60,7 @@
             class="btn btn-success "
             aria-pressed="true"
             (click)="onChangeStatus('ce')"
-            *ngIf="comptesEpargneStatus"
+            *ngIf="comptesEpargneStatus && !auth.isGerant()"
           >
             Ajouter Compte Epargne
           </button>

@@ -3,6 +3,7 @@ import { ConseillerService } from "./../../../services/conseiller.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Client } from "src/app/models/client.model";
 import { Compte } from "src/app/models/compte.model";
+import { AuthService } from "./../../../services/auth.service";
 
 @Component({
   selector: "app-details-client",
@@ -20,7 +21,8 @@ export class DetailsClientComponent implements OnInit {
   constructor(
     private conseillerService: ConseillerService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private auth: AuthService
   ) {}
 
   ngOnInit() {
