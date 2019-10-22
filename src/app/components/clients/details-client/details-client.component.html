@@ -31,7 +31,11 @@
               role="button"
               aria-pressed="true"
               >Modifier</a
-            ><button class="btn btn-danger" (click)="onDeleteClient()">
+            ><button
+              class="btn btn-danger"
+              (click)="onDeleteClient()"
+              *ngIf="!auth.isGerant()"
+            >
               Suprimmer
             </button>
           </div>
