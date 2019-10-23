@@ -21,11 +21,14 @@ export class DetailsEmployeComponent implements OnInit {
   ngOnInit() {
     this.conseillerService
       .getEmploye(this.route.snapshot.params["id"])
-      .subscribe(resp => {
-        this.employe = new Employe(resp["nom"], resp["prenom"]);
-        if (resp["clients"].length > 0) {
-          this.clients = resp["clients"];
-        } else this.message = "Cet employé ne gére aucun client";
-      });
+      .subscribe(
+        resp => {
+          this.employe = new Employe(resp["nom"], resp["prenom"]);
+          if (resp["clients"].length > 0) {
+            this.clients = resp["clients"];
+          } else this.message = "Cet employé ne gére aucun client";
+        },
+        err => console.log(err.error.message)
+      );
   }
 }

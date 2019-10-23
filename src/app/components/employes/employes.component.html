@@ -55,6 +55,7 @@
               <button
                 class="btn btn-danger  mr-4"
                 (click)="onDeleteEmploye(employe.id)"
+                [hidden]="employe['clients'].length > 0"
               >
                 Supprimer
               </button>

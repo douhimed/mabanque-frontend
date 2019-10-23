@@ -11,6 +11,7 @@ export class EmployesComponent implements OnInit {
   employes: any = null;
   message: string = "";
   disabled: boolean = false;
+  disabledDelete: boolean = false;
 
   constructor(
     private gerantService: GerantService,
