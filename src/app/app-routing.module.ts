@@ -31,7 +31,7 @@ const routes: Routes = [
   {
     path: "employes/:id/edit",
     component: EditEmployeComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, isGerantGuard]
   },
   {
     path: "employes/:id",

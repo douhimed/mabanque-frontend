@@ -27,7 +27,6 @@ export class EmployesComponent implements OnInit {
   }
 
   fetchEmployes() {
-    console.log("isAuthenticated : ", this.authService.isAuthenticated());
     this.gerantService
       .getAgentByGerant(this.authService.getUserId())
       .subscribe(resp => {

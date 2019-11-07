@@ -17,7 +17,7 @@ export class ConseillerService {
       "id-client": id.toString(),
       Authorization: this.auth.getToken()
     });
-    return this.http.delete(environment.url + "/clients", { headers: headers });
+    return this.http.delete(environment.url + "/clients", { headers });
   }
 
   getEmploye(id: number) {
@@ -93,12 +93,5 @@ export class ConseillerService {
     return this.http.post(environment.url + "/operations", operationInfos, {
       headers
     });
-  }
-
-  updateCompte(compte: Compte) {
-    const headers = new HttpHeaders({
-      Authorization: this.auth.getToken()
-    });
-    return this.http.put(environment.url + "/comptes", compte, { headers });
   }
 }
