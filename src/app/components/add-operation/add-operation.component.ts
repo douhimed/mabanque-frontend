@@ -2,8 +2,6 @@ import { Component, OnInit, OnChanges } from "@angular/core";
 import { Operation } from "src/app/models/operation.model";
 import { Router } from "@angular/router";
 import { ConseillerService } from "./../../services/conseiller.service";
-import { Employe } from "src/app/models/employe.model";
-import { GerantService } from "./../../services/gerant.service";
 import { AuthService } from "src/app/services/auth.service";
 import { Compte } from "./../../models/compte.model";
 

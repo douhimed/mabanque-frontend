@@ -21,8 +21,7 @@ export class DetailsClientComponent implements OnInit {
   constructor(
     private conseillerService: ConseillerService,
     private route: ActivatedRoute,
-    private router: Router,
-    private auth: AuthService
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -56,6 +55,7 @@ export class DetailsClientComponent implements OnInit {
   getStatus() {
     return this.status;
   }
+
   rangeCompte(comptes) {
     this.comptesCourant = [];
     this.comptesEpargne = [];

@@ -27,7 +27,6 @@ export class DashboardComponent implements OnInit {
     this.gerantService
       .getFullAgentByGerant(this.authService.getUserId())
       .subscribe(resp => {
-        console.log(resp);
         this.agence = resp;
         this.compte = resp["compte"];
         this.employes = resp["employes"];

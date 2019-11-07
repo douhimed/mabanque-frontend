@@ -45,8 +45,7 @@ export class ClientsComponent implements OnInit {
         this.user.nom = resp["nom"];
         this.user.prenom = resp["prenom"];
         this.clients = resp["clients"];
-        if (!this.authService.isGerant() && this.clients.length >= 5)
-          this.disabled = true;
+        if (this.clients.length >= 5) this.disabled = true;
         if (this.clients.length <= 0)
           this.message = "Ce conseiller ne gére aucun client";
       });

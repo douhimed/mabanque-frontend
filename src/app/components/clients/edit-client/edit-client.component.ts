@@ -53,8 +53,6 @@ export class EditClientComponent implements OnInit {
   }
 
   onUpdateClient() {
-    console.log(this.client);
-
     this.conseillerService
       .updateClient(this.client)
       .subscribe(resp =>
